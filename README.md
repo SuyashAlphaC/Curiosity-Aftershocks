@@ -10,6 +10,7 @@ No paid datasets, API keys, LLM subscriptions, or cloud accounts are required. T
 
 ## What you can do
 
+- Automatically discover current traffic spikes in the **Live monitor**, with real hourly source timestamps and a continuously updated candidate graph.
 - Explore three curated event studies: the April 2024 solar eclipse, Chandrayaan-3's August 2023 landing, and the June 2023 Titan submersible event.
 - Click a topic in a constellation to inspect daily traffic, baseline, lift, burst days, peak delay, and temporal cluster.
 - Scrub or replay a 50-day observation window; node sizes respond to the selected day's attention lift.
@@ -217,7 +218,7 @@ docs/               Screenshots and verification evidence
 | `GET /api/events/{id}/export` | CSV of daily observations and metrics |
 | `GET /api/pipeline` | Provenance and measured run metadata |
 
-IDs are `eclipse`, `moon`, and `titan`. Unknown IDs return 404. Missing analytics returns a readable 503 with a rebuild instruction. Exports neutralize spreadsheet formula prefixes in article titles. The service is read-only and binds to localhost by default.
+IDs are `eclipse`, `moon`, and `titan`. Unknown IDs return 404. Missing analytics returns a readable 503 with a rebuild instruction. Exports neutralize spreadsheet formula prefixes in article titles. Historical analytics routes are read-only; explicit monitor controls launch/stop a local background job. The service binds to localhost by default.
 
 Set `AFTERSHOCKS_DATA=/absolute/path/dashboard.json` to serve another generated artifact. Its companion bulk report is read from the same directory. The production UI is served only when `frontend/dist` exists at server startup; rebuild and restart after changing frontend code.
 
@@ -264,3 +265,52 @@ See `docs/VERIFICATION.md` for measurements and commands from this device. Passi
 ## License
 
 Application code: MIT. Wikimedia analytics observations: CC0. See `LICENSE` and the linked source documentation.
+
+## Recent-event monitor (new)
+
+Open **Live monitor** to investigate a real event from the past 24 hours. Enter its name and actual occurrence time (your browser's local timezone), optionally exclude literal headline terms, and click **Start monitoring**. The API launches one owned background worker; it does not require an LLM, API key, or paid streaming service.
+
+The event name is a label and its time defines the observation window. It is **not** evidence that discovered traffic changes were caused by that event. Headline exclusions are literal title filters, not semantic unrelatedness classification. The monitor scans broadly rather than limiting discovery to the historical studies' curated topics.
+
+### What happens automatically
+
+1. Check Wikimedia's public monthly file indexes for completed hourly dumps.
+2. Download available baseline files from the three UTC hours preceding the event's hour. A partially available baseline is processed as it arrives; missing files are not fabricated.
+3. Ingest each complete gzip file through a real **Spark Structured Streaming file source**, `foreachBatch`, and an `availableNow` trigger. A per-file checkpoint and committed report make completed files reusable without double-counting.
+4. Aggregate English desktop/mobile traffic into cached Parquet; exclude namespace/system titles. This scans the broad source universe rather than 19 chosen articles.
+5. Scan each newly observed post-event hour against the fixed pre-event baseline. Discover titles with all three baseline observations, baseline mean ≥ 10 views/hour, current views ≥ 200, lift ≥ 3, excess ≥ 100, and burst score ≥ 4. The burst score uses the same variance-floor formula as the historical studies.
+6. Display the 24 candidates with greatest excess views. Compute graph links from Pearson correlation of observed `log(1 + views)` values, requiring at least five shared hourly points and correlation ≥ 0.85. Missing article/hour observations remain missing; they are not silently zero-filled. There are no causal arrows from the event to candidates.
+7. Check for newly published files every five minutes. The browser polls the job's small status artifact every five seconds. Respect source `Retry-After` on temporary errors. Stop automatically after the 24-hour event window and a three-hour publication grace period.
+
+**This is near-real-time batch publication, not a second-by-second data feed.** Publication delay can be hours; full-file downloads and local Spark processing add further latency. The UI displays the latest observed hour, data age, baseline readiness, processing stage, and journal. It never labels accelerated historical data as live.
+
+For a presentation, select an actual event several hours old and start the monitor **before** the presentation so the baseline can finish. Newly arrived hourly files then update the graph without manual topic selection. If no titles meet the thresholds or there are too few shared points for links, an empty result is valid. A recent event with no published observations cannot produce an honest instant graph.
+
+### Runtime and resources
+
+- Keep the API server running. **Stop monitoring** stops its owned process group and retains the last observations. A graceful server shutdown also stops the worker. A server restart shows prior unfinished work as interrupted; starting again reuses completed hourly cache entries.
+- One worker per API instance; a cache-level process lock prevents concurrent writers from other instances.
+- A first run downloads multiple complete hourly files (typically hundreds of MB total) and may take several minutes. A full 24-hour watch can use several GB. All storage is local and no service bills are created.
+- Files live under ignored `data/monitor/`: `runs/<id>/config.json`, atomic `state.json`, checkpoints and worker logs; shared `cache/<hour>/parquet`, `report.json`, source manifests, and raw downloads.
+- `AFTERSHOCKS_MONITOR_DIR` can relocate monitor state/cache. The current process lifecycle uses POSIX process groups and file locks; Linux is the verified environment.
+- Restart a server that was already running before this update to load the new API routes.
+
+### Monitor API
+
+| Endpoint | Behavior |
+|---|---|
+| `GET /api/monitor` | Actual process state, observed candidates, graph, provenance timestamps and progress |
+| `POST /api/monitor/start` | JSON `{ "name": "Event name", "occurred_at": "<ISO timestamp with timezone>", "exclude_terms": [] }`; validates the past-24-hour window; 409 if this API already owns an active monitor |
+| `POST /api/monitor/stop` | Stops only this API's owned job; preserves last results |
+
+The normal historical analytics endpoints remain read-only. Keep the application bound to localhost; the monitor start endpoint performs local downloads and computation.
+
+### Scientific limits
+
+A three-hour baseline is a fast exploratory baseline, not a seasonally adjusted model. Daily cycles, simultaneous news, automated traffic, and sparse/new titles affect interpretation. Complete-case eligibility excludes titles missing any baseline sample. High co-movement among selected spikes can be a selection artifact, and correlations are not corrected for multiple testing. The monitor discovers **candidate anomalies**, not verified event effects or objectively unrelated subjects.
+
+Implementation: `aftershocks/monitor.py` (validation, lifecycle, scoring), `aftershocks/live_worker.py` (source discovery, Structured Streaming, graph publication), and `frontend/src/LiveMonitor.tsx` (monitor controls and live discovery UI).
+
+Monitor source-row totals describe the records represented by completed hourly cache entries. Restarting a watch reuses those entries; it does not imply that all raw rows were newly re-ingested in that run.
+
+For a step-by-step presentation script, see [the live demo guide](docs/LIVE_DEMO.md). Fresh-data validation results are recorded in [the verification report](docs/VERIFICATION.md).

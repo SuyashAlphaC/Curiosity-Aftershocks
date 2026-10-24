@@ -1,0 +1,37 @@
+[
+  {
+    "hour": "20261023-230000",
+    "url": "https://dumps.wikimedia.org/other/pageviews/2026/2026-10/pageviews-20261023-230000.gz",
+    "file": "pageviews-20261023-230000.gz",
+    "bytes": 59103310,
+    "sha256": "2bc5eb24de7ad6e7322623b58dbe2ae6fd164106ae1f43d13ccd24a64d416930"
+  },
+  {
+    "hour": "20261024-000000",
+    "url": "https://dumps.wikimedia.org/other/pageviews/2026/2026-10/pageviews-20261024-000000.gz",
+    "file": "pageviews-20261024-000000.gz",
+    "bytes": 52213080,
+    "sha256": "3dbc300e9ed839d3bbf0b57c616ca73bbad4102c3c6a217d018c2c3aea5da28f"
+  },
+  {
+    "hour": "20261024-010000",
+    "url": "https://dumps.wikimedia.org/other/pageviews/2026/2026-10/pageviews-20261024-010000.gz",
+    "file": "pageviews-20261024-010000.gz",
+    "bytes": 53248264,
+    "sha256": "82ce572128fe4c02e74658609e88eb6f7cc0d3bd40d3b81af84b70d31aba76a3"
+  },
+  {
+    "hour": "20261024-020000",
+    "url": "https://dumps.wikimedia.org/other/pageviews/2026/2026-10/pageviews-20261024-020000.gz",
+    "file": "pageviews-20261024-020000.gz",
+    "bytes": 49524326,
+    "sha256": "b46e114559321de8334972d252f553b942bb8569f1dc48f0a6f614217379ef55"
+  },
+  {
+    "hour": "20261024-030000",
+    "url": "https://dumps.wikimedia.org/other/pageviews/2026/2026-10/pageviews-20261024-030000.gz",
+    "file": "pageviews-20261024-030000.gz",
+    "bytes": 47337155,
+    "sha256": "569b2c18ff607b3cc6f5f89676425c8d22d1c88c1b428681795c0db7380d6d6b"
+  }
+]

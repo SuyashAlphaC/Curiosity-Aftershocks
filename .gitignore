@@ -16,3 +16,5 @@ spark-warehouse/
 frontend/test-results/
 frontend/playwright-report/
 frontend/*.tsbuildinfo
+
+data/monitor/

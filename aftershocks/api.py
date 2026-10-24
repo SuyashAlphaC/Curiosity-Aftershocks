@@ -1,18 +1,50 @@
-"""Read-only local analytics API serving atomically published Spark results."""
+"""Local analytics API and explicit start/stop lifecycle for the recent-event monitor."""
 
+import asyncio
 import csv
 import io
 import json
 import os
+from contextlib import asynccontextmanager
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
 
+from aftershocks.monitor import MonitorConfig, MonitorManager
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = Path(os.environ.get("AFTERSHOCKS_DATA", str(ROOT / "data/processed/dashboard.json")))
-app = FastAPI(title="Curiosity Aftershocks", version="1.0.0")
+monitor = MonitorManager(os.environ.get("AFTERSHOCKS_MONITOR_DIR", str(ROOT / "data/monitor")))
+
+
+@asynccontextmanager
+async def lifespan(_app):
+    yield
+    if monitor.process is not None:
+        await asyncio.to_thread(monitor.stop)
+
+
+app = FastAPI(title="Curiosity Aftershocks", version="1.1.0", lifespan=lifespan)
+
+
+@app.get("/api/monitor")
+def monitor_status():
+    return monitor.status()
+
+
+@app.post("/api/monitor/start")
+def start_monitor(config: MonitorConfig):
+    try:
+        return monitor.start(config)
+    except RuntimeError as error:
+        raise HTTPException(409, str(error)) from error
+
+
+@app.post("/api/monitor/stop")
+def stop_monitor():
+    return monitor.stop()
 
 
 def dataset():
@@ -26,7 +58,7 @@ def dataset():
 
 @app.get("/api/health")
 def health():
-    return {"status": "ready" if DATA.exists() else "awaiting_data", "version": "1.0.0"}
+    return {"status": "ready" if DATA.exists() else "awaiting_data", "version": app.version}
 
 
 @app.get("/api/events")

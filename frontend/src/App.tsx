@@ -1,3 +1,4 @@
+import LiveMonitor from "./LiveMonitor";
 import { useEffect, useMemo, useState } from "react";
 import {
   Activity,
@@ -791,6 +792,7 @@ export default function App() {
           <div className="rail-nav">
             {[
               [Telescope, "Observatory"],
+              [Radio, "Live monitor"],
               [Database, "Data pipeline"],
               [CircleHelp, "Methodology"],
             ].map(([Icon, name]) => {
@@ -858,7 +860,12 @@ export default function App() {
               </div>
             </div>
             <nav className="tabs" aria-label="Workspace views">
-              {["Observatory", "Data pipeline", "Methodology"].map((t) => (
+              {[
+                "Observatory",
+                "Live monitor",
+                "Data pipeline",
+                "Methodology",
+              ].map((t) => (
                 <button
                   key={t}
                   onClick={() => setTab(t)}
@@ -867,6 +874,8 @@ export default function App() {
                 >
                   {t === "Observatory" ? (
                     <Focus size={15} />
+                  ) : t === "Live monitor" ? (
+                    <Radio size={15} />
                   ) : t === "Data pipeline" ? (
                     <Database size={15} />
                   ) : (
@@ -880,7 +889,9 @@ export default function App() {
                 <ArrowDownToLine size={12} />
               </span>
             </nav>
-            {error ? (
+            {tab === "Live monitor" ? (
+              <LiveMonitor />
+            ) : error ? (
               <section className="error-state" role="alert">
                 <Activity size={30} />
                 <h2>We couldn’t load the observations.</h2>

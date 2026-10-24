@@ -1,0 +1,1968 @@
+{
+  "config": {
+    "name": "Live ingestion validation \u2014 not an attributed news event",
+    "occurred_at": "2026-10-24T02:00:00+00:00",
+    "exclude_terms": []
+  },
+  "phase": "completed",
+  "topics": [
+    {
+      "id": "Julie_Banderas",
+      "title": "Julie Banderas",
+      "views": 10613,
+      "baseline": 145.0,
+      "lift": 73.19,
+      "z": 77.74,
+      "excess": 10468,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 335,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 61,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 39,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 39,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 10613,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Ainsley_Earhardt",
+      "title": "Ainsley Earhardt",
+      "views": 8215,
+      "baseline": 47.67,
+      "lift": 172.34,
+      "z": 800.02,
+      "excess": 8167,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 35,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 60,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 48,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 1100,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 8215,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Steven_Matz",
+      "title": "Steven Matz",
+      "views": 7858,
+      "baseline": 85.0,
+      "lift": 92.45,
+      "z": 255.62,
+      "excess": 7773,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 63,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 64,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 128,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 476,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 7858,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Sean_Hannity",
+      "title": "Sean Hannity",
+      "views": 7082,
+      "baseline": 49.67,
+      "lift": 142.59,
+      "z": 997.85,
+      "excess": 7032,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 49,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 49,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 51,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 1081,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 7082,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Aaron_Ashby",
+      "title": "Aaron Ashby",
+      "views": 6818,
+      "baseline": 170.0,
+      "lift": 40.11,
+      "z": 70.18,
+      "excess": 6648,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 55,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 168,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 287,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 712,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 6818,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "William_Contreras",
+      "title": "William Contreras",
+      "views": 5740,
+      "baseline": 877.67,
+      "lift": 6.54,
+      "z": 6.87,
+      "excess": 4862,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 83,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 747,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 1803,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 2573,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 5740,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Abner_Uribe",
+      "title": "Abner Uribe",
+      "views": 4455,
+      "baseline": 46.67,
+      "lift": 95.46,
+      "z": 164.19,
+      "excess": 4408,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 22,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 34,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 84,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 4114,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 4455,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Cooper_Pratt",
+      "title": "Cooper Pratt",
+      "views": 4323,
+      "baseline": 497.67,
+      "lift": 8.69,
+      "z": 8.34,
+      "excess": 3825,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 44,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 323,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 1126,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 1296,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 4323,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Sydney_Sweeney",
+      "title": "Sydney Sweeney",
+      "views": 4015,
+      "baseline": 668.67,
+      "lift": 6.0,
+      "z": 118.79,
+      "excess": 3346,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 669,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 634,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 703,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 769,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 4015,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Kevin_Durant",
+      "title": "Kevin Durant",
+      "views": 3574,
+      "baseline": 334.0,
+      "lift": 10.7,
+      "z": 36.64,
+      "excess": 3240,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 275,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 268,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 459,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 829,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 3574,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Vallow-Daybell_murders",
+      "title": "Vallow-Daybell murders",
+      "views": 3471,
+      "baseline": 349.33,
+      "lift": 9.94,
+      "z": 26.13,
+      "excess": 3122,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 209,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 338,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 501,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 3937,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 3471,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Disappearance_of_Dee_Ann_Warner",
+      "title": "Disappearance of Dee Ann Warner",
+      "views": 2803,
+      "baseline": 127.0,
+      "lift": 22.07,
+      "z": 114.52,
+      "excess": 2676,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 100,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 124,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 157,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 3744,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 2803,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "I_Play_Rocky",
+      "title": "I Play Rocky",
+      "views": 2899,
+      "baseline": 373.33,
+      "lift": 7.77,
+      "z": 130.72,
+      "excess": 2526,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 375,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 382,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 363,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 332,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 2899,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Willson_Contreras",
+      "title": "Willson Contreras",
+      "views": 2485,
+      "baseline": 347.33,
+      "lift": 7.15,
+      "z": 6.89,
+      "excess": 2138,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 25,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 251,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 766,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 1096,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 2485,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Tammy_Wynette",
+      "title": "Tammy Wynette",
+      "views": 2193,
+      "baseline": 181.0,
+      "lift": 12.12,
+      "z": 80.93,
+      "excess": 2012,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 154,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 175,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 214,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 2239,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 2193,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Andy_Ashby",
+      "title": "Andy Ashby",
+      "views": 2021,
+      "baseline": 33.0,
+      "lift": 61.24,
+      "z": 161.25,
+      "excess": 1988,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 17,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 35,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 47,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 204,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 2021,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Anthony_Ippolito",
+      "title": "Anthony Ippolito",
+      "views": 2136,
+      "baseline": 226.0,
+      "lift": 9.45,
+      "z": 127.05,
+      "excess": 1910,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 225,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 240,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 213,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 231,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 2136,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Will_Proctor",
+      "title": "Will Proctor",
+      "views": 1854,
+      "baseline": 10.0,
+      "lift": 185.4,
+      "z": 492.83,
+      "excess": 1844,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 5,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 14,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 11,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 154,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 1854,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Crown_Jewel_(2026)",
+      "title": "Crown Jewel (2026)",
+      "views": 2318,
+      "baseline": 695.0,
+      "lift": 3.34,
+      "z": 6.56,
+      "excess": 1623,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 540,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 501,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 1044,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 2713,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 2318,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Frankenstein_(1931_film)",
+      "title": "Frankenstein (1931 film)",
+      "views": 1625,
+      "baseline": 111.0,
+      "lift": 14.64,
+      "z": 137.83,
+      "excess": 1514,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 100,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 126,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 107,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 359,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 1625,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Steve_Hilton",
+      "title": "Steve Hilton",
+      "views": 1803,
+      "baseline": 297.67,
+      "lift": 6.06,
+      "z": 87.25,
+      "excess": 1505,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 276,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 305,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 312,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 462,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 1803,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Daniel_Stewart_(Australian_footballer)",
+      "title": "Daniel Stewart (Australian footballer)",
+      "views": 1464,
+      "baseline": 28.33,
+      "lift": 51.67,
+      "z": 174.67,
+      "excess": 1436,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 19,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 27,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 39,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 179,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 1464,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "RAF_14",
+      "title": "RAF 14",
+      "views": 1802,
+      "baseline": 385.33,
+      "lift": 4.68,
+      "z": 45.64,
+      "excess": 1417,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 348,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 384,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 424,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 1037,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 1802,
+          "baseline": false
+        }
+      ]
+    },
+    {
+      "id": "Steven_Adams",
+      "title": "Steven Adams",
+      "views": 1436,
+      "baseline": 33.67,
+      "lift": 42.65,
+      "z": 117.87,
+      "excess": 1402,
+      "baselineSamples": 3,
+      "series": [
+        {
+          "hour": "20261023-230000",
+          "views": 20,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-000000",
+          "views": 32,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-010000",
+          "views": 49,
+          "baseline": true
+        },
+        {
+          "hour": "20261024-020000",
+          "views": 147,
+          "baseline": false
+        },
+        {
+          "hour": "20261024-030000",
+          "views": 1436,
+          "baseline": false
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "source": "Julie_Banderas",
+      "target": "Sydney_Sweeney",
+      "correlation": 0.911,
+      "samples": 5
+    },
+    {
+      "source": "Julie_Banderas",
+      "target": "I_Play_Rocky",
+      "correlation": 0.9387,
+      "samples": 5
+    },
+    {
+      "source": "Julie_Banderas",
+      "target": "Anthony_Ippolito",
+      "correlation": 0.9291,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Steven_Matz",
+      "correlation": 0.9656,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Sean_Hannity",
+      "correlation": 0.9969,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Aaron_Ashby",
+      "correlation": 0.9453,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Abner_Uribe",
+      "correlation": 0.9445,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Sydney_Sweeney",
+      "correlation": 0.857,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Kevin_Durant",
+      "correlation": 0.9561,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Vallow-Daybell_murders",
+      "correlation": 0.9275,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Disappearance_of_Dee_Ann_Warner",
+      "correlation": 0.933,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Tammy_Wynette",
+      "correlation": 0.9496,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Andy_Ashby",
+      "correlation": 0.9787,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Will_Proctor",
+      "correlation": 0.9944,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Crown_Jewel_(2026)",
+      "correlation": 0.8637,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.9862,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Steve_Hilton",
+      "correlation": 0.9346,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9848,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "RAF_14",
+      "correlation": 0.9963,
+      "samples": 5
+    },
+    {
+      "source": "Ainsley_Earhardt",
+      "target": "Steven_Adams",
+      "correlation": 0.9688,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Sean_Hannity",
+      "correlation": 0.9663,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Aaron_Ashby",
+      "correlation": 0.9703,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Abner_Uribe",
+      "correlation": 0.8753,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Sydney_Sweeney",
+      "correlation": 0.9455,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Kevin_Durant",
+      "correlation": 0.9981,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "I_Play_Rocky",
+      "correlation": 0.8898,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Tammy_Wynette",
+      "correlation": 0.8654,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Andy_Ashby",
+      "correlation": 0.9898,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Anthony_Ippolito",
+      "correlation": 0.9125,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Will_Proctor",
+      "correlation": 0.9773,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.9843,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Steve_Hilton",
+      "correlation": 0.9832,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9944,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "RAF_14",
+      "correlation": 0.9681,
+      "samples": 5
+    },
+    {
+      "source": "Steven_Matz",
+      "target": "Steven_Adams",
+      "correlation": 0.9956,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Aaron_Ashby",
+      "correlation": 0.9295,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Abner_Uribe",
+      "correlation": 0.9453,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Sydney_Sweeney",
+      "correlation": 0.857,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Kevin_Durant",
+      "correlation": 0.9577,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Vallow-Daybell_murders",
+      "correlation": 0.9233,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Disappearance_of_Dee_Ann_Warner",
+      "correlation": 0.9356,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Tammy_Wynette",
+      "correlation": 0.9525,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Andy_Ashby",
+      "correlation": 0.97,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Will_Proctor",
+      "correlation": 0.9859,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Crown_Jewel_(2026)",
+      "correlation": 0.8718,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.9824,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Steve_Hilton",
+      "correlation": 0.9307,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9812,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "RAF_14",
+      "correlation": 0.9957,
+      "samples": 5
+    },
+    {
+      "source": "Sean_Hannity",
+      "target": "Steven_Adams",
+      "correlation": 0.9625,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "William_Contreras",
+      "correlation": 0.8892,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Abner_Uribe",
+      "correlation": 0.8812,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Cooper_Pratt",
+      "correlation": 0.9152,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Sydney_Sweeney",
+      "correlation": 0.8919,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Kevin_Durant",
+      "correlation": 0.9728,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Vallow-Daybell_murders",
+      "correlation": 0.8724,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Willson_Contreras",
+      "correlation": 0.8862,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Tammy_Wynette",
+      "correlation": 0.8565,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Andy_Ashby",
+      "correlation": 0.9895,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Anthony_Ippolito",
+      "correlation": 0.8601,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Will_Proctor",
+      "correlation": 0.9702,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.9534,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Steve_Hilton",
+      "correlation": 0.9475,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9791,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "RAF_14",
+      "correlation": 0.9505,
+      "samples": 5
+    },
+    {
+      "source": "Aaron_Ashby",
+      "target": "Steven_Adams",
+      "correlation": 0.9877,
+      "samples": 5
+    },
+    {
+      "source": "William_Contreras",
+      "target": "Cooper_Pratt",
+      "correlation": 0.9943,
+      "samples": 5
+    },
+    {
+      "source": "William_Contreras",
+      "target": "Willson_Contreras",
+      "correlation": 0.9994,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Kevin_Durant",
+      "correlation": 0.8782,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Vallow-Daybell_murders",
+      "correlation": 0.9966,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Disappearance_of_Dee_Ann_Warner",
+      "correlation": 0.993,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Tammy_Wynette",
+      "correlation": 0.995,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Andy_Ashby",
+      "correlation": 0.9031,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Will_Proctor",
+      "correlation": 0.9209,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Crown_Jewel_(2026)",
+      "correlation": 0.9736,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.8814,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9118,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "RAF_14",
+      "correlation": 0.9622,
+      "samples": 5
+    },
+    {
+      "source": "Abner_Uribe",
+      "target": "Steven_Adams",
+      "correlation": 0.8832,
+      "samples": 5
+    },
+    {
+      "source": "Cooper_Pratt",
+      "target": "Willson_Contreras",
+      "correlation": 0.9953,
+      "samples": 5
+    },
+    {
+      "source": "Cooper_Pratt",
+      "target": "Andy_Ashby",
+      "correlation": 0.8546,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "Kevin_Durant",
+      "correlation": 0.9371,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "I_Play_Rocky",
+      "correlation": 0.9892,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "Andy_Ashby",
+      "correlation": 0.9133,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "Anthony_Ippolito",
+      "correlation": 0.9938,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "Will_Proctor",
+      "correlation": 0.8887,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.928,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "Steve_Hilton",
+      "correlation": 0.9833,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9151,
+      "samples": 5
+    },
+    {
+      "source": "Sydney_Sweeney",
+      "target": "Steven_Adams",
+      "correlation": 0.9335,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Vallow-Daybell_murders",
+      "correlation": 0.8516,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "I_Play_Rocky",
+      "correlation": 0.8775,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Tammy_Wynette",
+      "correlation": 0.8629,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Andy_Ashby",
+      "correlation": 0.9868,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Anthony_Ippolito",
+      "correlation": 0.8991,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Will_Proctor",
+      "correlation": 0.9686,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.9726,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Steve_Hilton",
+      "correlation": 0.9742,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9911,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "RAF_14",
+      "correlation": 0.9636,
+      "samples": 5
+    },
+    {
+      "source": "Kevin_Durant",
+      "target": "Steven_Adams",
+      "correlation": 0.9937,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "Disappearance_of_Dee_Ann_Warner",
+      "correlation": 0.9898,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "Tammy_Wynette",
+      "correlation": 0.9889,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "Andy_Ashby",
+      "correlation": 0.8867,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "Will_Proctor",
+      "correlation": 0.9055,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "Crown_Jewel_(2026)",
+      "correlation": 0.9714,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.8573,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.8913,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "RAF_14",
+      "correlation": 0.9457,
+      "samples": 5
+    },
+    {
+      "source": "Vallow-Daybell_murders",
+      "target": "Steven_Adams",
+      "correlation": 0.863,
+      "samples": 5
+    },
+    {
+      "source": "Disappearance_of_Dee_Ann_Warner",
+      "target": "Tammy_Wynette",
+      "correlation": 0.9986,
+      "samples": 5
+    },
+    {
+      "source": "Disappearance_of_Dee_Ann_Warner",
+      "target": "Andy_Ashby",
+      "correlation": 0.8685,
+      "samples": 5
+    },
+    {
+      "source": "Disappearance_of_Dee_Ann_Warner",
+      "target": "Will_Proctor",
+      "correlation": 0.8999,
+      "samples": 5
+    },
+    {
+      "source": "Disappearance_of_Dee_Ann_Warner",
+      "target": "Crown_Jewel_(2026)",
+      "correlation": 0.9552,
+      "samples": 5
+    },
+    {
+      "source": "Disappearance_of_Dee_Ann_Warner",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.8613,
+      "samples": 5
+    },
+    {
+      "source": "Disappearance_of_Dee_Ann_Warner",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.8809,
+      "samples": 5
+    },
+    {
+      "source": "Disappearance_of_Dee_Ann_Warner",
+      "target": "RAF_14",
+      "correlation": 0.946,
+      "samples": 5
+    },
+    {
+      "source": "I_Play_Rocky",
+      "target": "Andy_Ashby",
+      "correlation": 0.8546,
+      "samples": 5
+    },
+    {
+      "source": "I_Play_Rocky",
+      "target": "Anthony_Ippolito",
+      "correlation": 0.9977,
+      "samples": 5
+    },
+    {
+      "source": "I_Play_Rocky",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.8768,
+      "samples": 5
+    },
+    {
+      "source": "I_Play_Rocky",
+      "target": "Steve_Hilton",
+      "correlation": 0.9528,
+      "samples": 5
+    },
+    {
+      "source": "I_Play_Rocky",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.8527,
+      "samples": 5
+    },
+    {
+      "source": "I_Play_Rocky",
+      "target": "Steven_Adams",
+      "correlation": 0.8786,
+      "samples": 5
+    },
+    {
+      "source": "Tammy_Wynette",
+      "target": "Andy_Ashby",
+      "correlation": 0.8914,
+      "samples": 5
+    },
+    {
+      "source": "Tammy_Wynette",
+      "target": "Will_Proctor",
+      "correlation": 0.9197,
+      "samples": 5
+    },
+    {
+      "source": "Tammy_Wynette",
+      "target": "Crown_Jewel_(2026)",
+      "correlation": 0.9537,
+      "samples": 5
+    },
+    {
+      "source": "Tammy_Wynette",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.8857,
+      "samples": 5
+    },
+    {
+      "source": "Tammy_Wynette",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9038,
+      "samples": 5
+    },
+    {
+      "source": "Tammy_Wynette",
+      "target": "RAF_14",
+      "correlation": 0.9614,
+      "samples": 5
+    },
+    {
+      "source": "Tammy_Wynette",
+      "target": "Steven_Adams",
+      "correlation": 0.8698,
+      "samples": 5
+    },
+    {
+      "source": "Andy_Ashby",
+      "target": "Anthony_Ippolito",
+      "correlation": 0.8827,
+      "samples": 5
+    },
+    {
+      "source": "Andy_Ashby",
+      "target": "Will_Proctor",
+      "correlation": 0.9928,
+      "samples": 5
+    },
+    {
+      "source": "Andy_Ashby",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.9859,
+      "samples": 5
+    },
+    {
+      "source": "Andy_Ashby",
+      "target": "Steve_Hilton",
+      "correlation": 0.9697,
+      "samples": 5
+    },
+    {
+      "source": "Andy_Ashby",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9976,
+      "samples": 5
+    },
+    {
+      "source": "Andy_Ashby",
+      "target": "RAF_14",
+      "correlation": 0.979,
+      "samples": 5
+    },
+    {
+      "source": "Andy_Ashby",
+      "target": "Steven_Adams",
+      "correlation": 0.998,
+      "samples": 5
+    },
+    {
+      "source": "Anthony_Ippolito",
+      "target": "Will_Proctor",
+      "correlation": 0.8613,
+      "samples": 5
+    },
+    {
+      "source": "Anthony_Ippolito",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.9064,
+      "samples": 5
+    },
+    {
+      "source": "Anthony_Ippolito",
+      "target": "Steve_Hilton",
+      "correlation": 0.9692,
+      "samples": 5
+    },
+    {
+      "source": "Anthony_Ippolito",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.8815,
+      "samples": 5
+    },
+    {
+      "source": "Anthony_Ippolito",
+      "target": "Steven_Adams",
+      "correlation": 0.9031,
+      "samples": 5
+    },
+    {
+      "source": "Will_Proctor",
+      "target": "Frankenstein_(1931_film)",
+      "correlation": 0.9926,
+      "samples": 5
+    },
+    {
+      "source": "Will_Proctor",
+      "target": "Steve_Hilton",
+      "correlation": 0.9572,
+      "samples": 5
+    },
+    {
+      "source": "Will_Proctor",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.993,
+      "samples": 5
+    },
+    {
+      "source": "Will_Proctor",
+      "target": "RAF_14",
+      "correlation": 0.9891,
+      "samples": 5
+    },
+    {
+      "source": "Will_Proctor",
+      "target": "Steven_Adams",
+      "correlation": 0.9854,
+      "samples": 5
+    },
+    {
+      "source": "Crown_Jewel_(2026)",
+      "target": "RAF_14",
+      "correlation": 0.9003,
+      "samples": 5
+    },
+    {
+      "source": "Frankenstein_(1931_film)",
+      "target": "Steve_Hilton",
+      "correlation": 0.979,
+      "samples": 5
+    },
+    {
+      "source": "Frankenstein_(1931_film)",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.99,
+      "samples": 5
+    },
+    {
+      "source": "Frankenstein_(1931_film)",
+      "target": "RAF_14",
+      "correlation": 0.9762,
+      "samples": 5
+    },
+    {
+      "source": "Frankenstein_(1931_film)",
+      "target": "Steven_Adams",
+      "correlation": 0.9841,
+      "samples": 5
+    },
+    {
+      "source": "Steve_Hilton",
+      "target": "Daniel_Stewart_(Australian_footballer)",
+      "correlation": 0.9706,
+      "samples": 5
+    },
+    {
+      "source": "Steve_Hilton",
+      "target": "RAF_14",
+      "correlation": 0.924,
+      "samples": 5
+    },
+    {
+      "source": "Steve_Hilton",
+      "target": "Steven_Adams",
+      "correlation": 0.9794,
+      "samples": 5
+    },
+    {
+      "source": "Daniel_Stewart_(Australian_footballer)",
+      "target": "RAF_14",
+      "correlation": 0.9861,
+      "samples": 5
+    },
+    {
+      "source": "Daniel_Stewart_(Australian_footballer)",
+      "target": "Steven_Adams",
+      "correlation": 0.9967,
+      "samples": 5
+    },
+    {
+      "source": "RAF_14",
+      "target": "Steven_Adams",
+      "correlation": 0.9701,
+      "samples": 5
+    }
+  ],
+  "timeline": [
+    {
+      "hour": "2026-10-24T02:00:00+00:00",
+      "candidates": 107,
+      "scannedArticles": 1419683
+    },
+    {
+      "hour": "2026-10-24T03:00:00+00:00",
+      "candidates": 174,
+      "scannedArticles": 1413392
+    }
+  ],
+  "log": [
+    {
+      "time": "2026-10-24T06:30:48.356542+00:00",
+      "message": "Starting Apache Spark Structured Streaming\u2026"
+    },
+    {
+      "time": "2026-10-24T06:31:05.468493+00:00",
+      "message": "Checking Wikimedia for published hourly dumps\u2026"
+    },
+    {
+      "time": "2026-10-24T06:31:06.907141+00:00",
+      "message": "Downloading the complete Oct 23, 23:00 UTC dump\u2026"
+    },
+    {
+      "time": "2026-10-24T06:32:38.426238+00:00",
+      "message": "Spark is scanning 56.4 MiB for 23:00 UTC\u2026"
+    },
+    {
+      "time": "2026-10-24T06:34:20.496145+00:00",
+      "message": "Processed 23:00 UTC; updating the anomaly scan\u2026"
+    },
+    {
+      "time": "2026-10-24T06:34:20.497511+00:00",
+      "message": "Downloading the complete Oct 24, 00:00 UTC dump\u2026"
+    },
+    {
+      "time": "2026-10-24T06:36:33.553239+00:00",
+      "message": "Spark is scanning 49.8 MiB for 00:00 UTC\u2026"
+    },
+    {
+      "time": "2026-10-24T06:37:51.156794+00:00",
+      "message": "Processed 00:00 UTC; updating the anomaly scan\u2026"
+    },
+    {
+      "time": "2026-10-24T06:37:51.158311+00:00",
+      "message": "Downloading the complete Oct 24, 01:00 UTC dump\u2026"
+    },
+    {
+      "time": "2026-10-24T06:39:10.991799+00:00",
+      "message": "Spark is scanning 50.8 MiB for 01:00 UTC\u2026"
+    },
+    {
+      "time": "2026-10-24T06:40:44.587403+00:00",
+      "message": "Processed 01:00 UTC; updating the anomaly scan\u2026"
+    },
+    {
+      "time": "2026-10-24T06:40:44.589054+00:00",
+      "message": "Downloading the complete Oct 24, 02:00 UTC dump\u2026"
+    },
+    {
+      "time": "2026-10-24T06:42:06.858166+00:00",
+      "message": "Spark is scanning 47.2 MiB for 02:00 UTC\u2026"
+    },
+    {
+      "time": "2026-10-24T06:43:36.842654+00:00",
+      "message": "Processed 02:00 UTC; updating the anomaly scan\u2026"
+    },
+    {
+      "time": "2026-10-24T06:44:33.625584+00:00",
+      "message": "107 candidate spikes found across 1,419,683 articles."
+    },
+    {
+      "time": "2026-10-24T06:44:33.636312+00:00",
+      "message": "Downloading the complete Oct 24, 03:00 UTC dump\u2026"
+    },
+    {
+      "time": "2026-10-24T06:46:14.465455+00:00",
+      "message": "Spark is scanning 45.1 MiB for 03:00 UTC\u2026"
+    },
+    {
+      "time": "2026-10-24T06:47:28.861412+00:00",
+      "message": "Processed 03:00 UTC; updating the anomaly scan\u2026"
+    },
+    {
+      "time": "2026-10-24T06:48:18.721554+00:00",
+      "message": "174 candidate spikes found across 1,413,392 articles."
+    },
+    {
+      "time": "2026-10-24T06:48:18.725554+00:00",
+      "message": "Watching for the next published hour. Next source check in 5 minutes."
+    },
+    {
+      "time": "2026-10-24T06:48:18.734008+00:00",
+      "message": "Scan completed."
+    }
+  ],
+  "sourceRecords": 29509818,
+  "processedHours": 5,
+  "baselineHours": 3,
+  "baselineReady": 3,
+  "eventHour": "2026-10-24T02:00:00+00:00",
+  "pollSeconds": 300,
+  "method": "3 pre-event hourly samples; views \u2265 200, lift \u2265 3, excess \u2265 100, z \u2265 4. Graph edges: observed log-count correlation \u2265 0.85 over \u2265 5 shared points.",
+  "limitations": [
+    "Global traffic spikes are candidates, not proven effects of this event.",
+    "Excluding headline terms is lexical filtering, not proof of semantic unrelatedness.",
+    "A short three-hour baseline is sensitive to daily traffic cycles and other concurrent news.",
+    "Hourly dumps include automated traffic. New or sparse titles without all baseline samples are excluded.",
+    "The event hour may include traffic from before the exact event time."
+  ],
+  "message": "Scan completed.",
+  "updatedAt": "2026-10-24T06:48:18.733949+00:00",
+  "processingHour": "2026-10-24T03:00:00+00:00",
+  "candidateCount": 174,
+  "scannedArticles": 1413392,
+  "latestHour": "2026-10-24T03:00:00+00:00",
+  "dataLagMinutes": 168.3,
+  "nextCheckAt": "2026-10-24T06:53:18.725495+00:00"
+}

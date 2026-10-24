@@ -66,3 +66,24 @@ These high errors in anticipated events are real results, not hidden failures: t
 ### Scope of verification
 
 Verified locally on a single machine. No paid services or credentials were used. Multi-node Spark execution, internet availability on another device, and future upstream data changes are not asserted as tested. The bundled CC0 reference observations make the demonstrated daily analytics independent of future API availability.
+
+
+## Recent-event monitor extension
+
+Fresh-data validation on 2026-10-24 used five complete public hourly files: 2026-10-23 23:00 UTC through 2026-10-24 03:00 UTC. The test's 02:00 UTC cutoff is an engineering validation window, not attribution to a named real-world event.
+
+- **29,509,818 source records** ingested through the actual Spark Structured Streaming file source and published as hourly Parquet.
+- Three pre-cutoff baseline hours, followed by two observed post-cutoff hours.
+- At 02:00 UTC: **107** spike candidates from **1,419,683** English article titles.
+- At 03:00 UTC: **174** spike candidates from **1,413,392** English article titles.
+- The 24 strongest current candidates produced **158** observed co-movement links (correlation ≥ 0.85; five shared observations).
+- No article list was supplied for discovery. Namespace/system titles, incomplete baselines, low traffic and non-bursting observations were excluded.
+- Evidence: `live-validation.json` and `live-source-manifest.json`. Source files and full Parquet are in the ignored local monitor cache, not bundled into Git.
+- Ten monitor tests passed: timezone/recent-event validation; burst eligibility and noise rejection; minimum graph evidence; an actual Structured Streaming micro-batch and idempotent reuse; owned process lifecycle and duplicate-start rejection; API validation; partial-baseline ingestion without fabrication; cache locking; decoded headline filtering; and avoiding mutation of another API's worker state.
+- The seven original analytics/backend tests remain passing. Five browser tests pass, covering the existing application plus monitor configuration, candidate inspection, stopping, independence from historical artifacts, and mobile layout.
+- Production frontend build and Python lint passed.
+
+The initial fresh-data warm-up on this connection took approximately 20 minutes for five full files plus analytics. This is why the demo guide recommends starting before presenting. Reusing completed hourly Parquet avoids downloading and ingesting those raw files again. The source itself was several hours behind wall-clock time; the UI explicitly displays that age.
+
+
+The actual HTTP lifecycle was also exercised: `POST /api/monitor/start` launched a real worker, reused the five completed hourly caches, recomputed both observation frames, and reached a watching state. `POST /api/monitor/stop` terminated the owned worker and retained all 24 nodes / 158 links. Desktop and 390 px mobile screenshots of that actual running watch are saved as `live-monitor.png` and `live-monitor-mobile.png`; the browser reported no uncaught errors or document overflow.
