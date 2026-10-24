@@ -1,0 +1,97 @@
+{
+  "engine": "Apache Spark 4.0.1",
+  "records": 7750691,
+  "validRecords": 7750691,
+  "rejectedRecords": 0,
+  "durationSeconds": 164.53,
+  "recordsPerSecond": 47107,
+  "inputBytes": 66063471,
+  "files": [
+    "pageviews-20240408-180000.gz"
+  ],
+  "builtAt": "2026-10-24T06:01:23.040658+00:00",
+  "topArticles": [
+    {
+      "article": "Main_Page",
+      "views": 425294
+    },
+    {
+      "article": "Special:Search",
+      "views": 131123
+    },
+    {
+      "article": "Solar_eclipse_of_April_8,_2024",
+      "views": 123455
+    },
+    {
+      "article": "-",
+      "views": 65432
+    },
+    {
+      "article": "Solar_eclipse",
+      "views": 42186
+    },
+    {
+      "article": "List_of_solar_eclipses_in_the_21st_century",
+      "views": 25478
+    },
+    {
+      "article": "List_of_solar_eclipses_visible_from_the_United_States",
+      "views": 23673
+    },
+    {
+      "article": "2024_Indian_Premier_League",
+      "views": 19957
+    },
+    {
+      "article": "Indian_Premier_League",
+      "views": 18535
+    },
+    {
+      "article": "WrestleMania_XL",
+      "views": 17562
+    },
+    {
+      "article": "Wikipedia:Featured_pictures",
+      "views": 17314
+    },
+    {
+      "article": "Cody_Rhodes",
+      "views": 13888
+    },
+    {
+      "article": "Pornhub",
+      "views": 12613
+    },
+    {
+      "article": "XXXTentacion",
+      "views": 11671
+    },
+    {
+      "article": "Solar_eclipse_of_August_21,_2017",
+      "views": 11519
+    },
+    {
+      "article": "Lunar_eclipse",
+      "views": 10560
+    },
+    {
+      "article": "Dawn_Staley",
+      "views": 10404
+    },
+    {
+      "article": "Joe_Sugg",
+      "views": 9778
+    },
+    {
+      "article": "Windows_10_version_history",
+      "views": 9649
+    },
+    {
+      "article": "Eclipse",
+      "views": 9015
+    }
+  ],
+  "granularity": "hourly",
+  "note": "Hourly dumps include automated traffic; not interchangeable with API agent=user daily series."
+}

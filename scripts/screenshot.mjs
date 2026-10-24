@@ -1,0 +1,10 @@
+import { chromium } from '../frontend/node_modules/playwright/index.mjs';
+const browser = await chromium.launch({executablePath:process.env.CHROME_PATH || '/usr/bin/google-chrome',args:['--no-sandbox']});
+const page = await browser.newPage({viewport:{width:1512,height:1100},deviceScaleFactor:1});
+await page.goto('http://127.0.0.1:8000');
+await page.getByRole('heading',{name:'When the sun disappeared'}).waitFor();
+await page.evaluate(()=>document.fonts.ready);
+await page.screenshot({path:'docs/observatory.png',fullPage:true});
+await page.getByRole('navigation',{name:'Workspace views'}).getByRole('button',{name:'Data pipeline'}).click();
+await page.screenshot({path:'docs/pipeline.png',fullPage:true});
+await browser.close();
