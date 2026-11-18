@@ -270,7 +270,7 @@ Application code: MIT. Wikimedia analytics observations: CC0. See `LICENSE` and 
 
 Open **Live monitor** to investigate a real event from the past 24 hours. Enter its name and actual occurrence time (your browser's local timezone), optionally exclude literal headline terms, and click **Start monitoring**. The API launches one owned background worker; it does not require an LLM, API key, or paid streaming service.
 
-The event name is a label and its time defines the observation window. It is **not** evidence that discovered traffic changes were caused by that event. Headline exclusions are literal title filters, not semantic unrelatedness classification. The monitor scans broadly rather than limiting discovery to the historical studies' curated topics.
+The event name/context define the relevance query, and its time defines the observation window. Required concepts and Spark MLlib TF-IDF filter traffic spikes before graph selection. This indicates topical relevance, **not** evidence that the event caused those changes. Headline exclusions remain optional literal title filters.
 
 ### What happens automatically
 
@@ -279,7 +279,7 @@ The event name is a label and its time defines the observation window. It is **n
 3. Ingest each complete gzip file through a real **Spark Structured Streaming file source**, `foreachBatch`, and an `availableNow` trigger. A per-file checkpoint and committed report make completed files reusable without double-counting.
 4. Aggregate English desktop/mobile traffic into cached Parquet; exclude namespace/system titles. This scans the broad source universe rather than 19 chosen articles.
 5. Scan each newly observed post-event hour against the fixed pre-event baseline. Discover titles with all three baseline observations, baseline mean ≥ 10 views/hour, current views ≥ 200, lift ≥ 3, excess ≥ 100, and burst score ≥ 4. The burst score uses the same variance-floor formula as the historical studies.
-6. Display the 24 candidates with greatest excess views. Compute graph links from Pearson correlation of observed `log(1 + views)` values, requiring at least five shared hourly points and correlation ≥ 0.85. Missing article/hour observations remain missing; they are not silently zero-filled. There are no causal arrows from the event to candidates.
+6. Check Wikipedia descriptions for the strongest 300 spikes using the event-relevance filter described below; display up to 24 accepted candidates ranked by excess views. Compute graph links from Pearson correlation of observed `log(1 + views)` values, requiring at least five shared hourly points and correlation ≥ 0.85. Missing article/hour observations remain missing; they are not silently zero-filled. There are no causal arrows from the event to candidates.
 7. Check for newly published files every five minutes. The browser polls the job's small status artifact every five seconds. Respect source `Retry-After` on temporary errors. Stop automatically after the 24-hour event window and a three-hour publication grace period.
 
 **This is near-real-time batch publication, not a second-by-second data feed.** Publication delay can be hours; full-file downloads and local Spark processing add further latency. The UI displays the latest observed hour, data age, baseline readiness, processing stage, and journal. It never labels accelerated historical data as live.
@@ -314,3 +314,31 @@ Implementation: `aftershocks/monitor.py` (validation, lifecycle, scoring), `afte
 Monitor source-row totals describe the records represented by completed hourly cache entries. Restarting a watch reuses those entries; it does not imply that all raw rows were newly re-ingested in that run.
 
 For a step-by-step presentation script, see [the live demo guide](docs/LIVE_DEMO.md). Fresh-data validation results are recorded in [the verification report](docs/VERIFICATION.md).
+
+### Event-relevance filtering (live monitor)
+
+The live graph now requires **both a traffic spike and a topical relevance match**.
+Supply an event name and optional context (location, issue, people/organizations).
+Required relevance terms are comma-separated concepts; all must occur in the
+article's lead text/title/categories. Leaving them blank derives concepts from the
+event name. At least two concepts are needed. For the France-protest watch, use
+`France, protest`; French and protest/demonstration/unrest/strike variants are normalized.
+Other event vocabularies currently use literal words, so explicit terms help.
+
+The strongest **300** traffic spikes by excess views are checked, before choosing
+24 graph nodes. Public Wikipedia introductory extracts and up to 20 categories per
+article are fetched in batches and cached for 24 hours. Spark MLlib `HashingTF`
+(binary, 262,144 features), `IDF`, and L2 `Normalizer` produce cosine similarity to
+the event context. IDF weights use `1 + IDF` so tiny candidate pools do not lose
+shared concepts. The fixed exploratory cosine cutoff is **0.06**; it is not a
+probability or calibrated classification accuracy. Every required concept must
+also match. Inspector explanations include matched concepts, similarity, source,
+and the fetched text. Article extracts are Wikipedia CC BY-SA content (unlike the
+CC0 traffic counts).
+
+Missing descriptions are excluded. Source failures put the watch into retrying
+rather than publishing unfiltered candidates. Zero accepted topics is a legitimate
+result. The interface distinguishes all traffic spikes, the checked pool, and
+accepted relevant spikes. Topics ranked below 300 can be missed. Text similarity
+can still match older protests or superficial vocabulary; it demonstrates topical
+relevance, **not a verified connection to the specific event or causal impact**.

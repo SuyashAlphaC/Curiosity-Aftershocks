@@ -36,6 +36,10 @@ def monitor_status():
 
 @app.post("/api/monitor/start")
 def start_monitor(config: MonitorConfig):
+    from aftershocks.relevance import anchors
+
+    if len(anchors(config.model_dump())) < 2:
+        raise HTTPException(422, "Provide at least two specific event concepts, such as France, protest.")
     try:
         return monitor.start(config)
     except RuntimeError as error:

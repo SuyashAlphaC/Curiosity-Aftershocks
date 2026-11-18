@@ -87,3 +87,11 @@ The initial fresh-data warm-up on this connection took approximately 20 minutes 
 
 
 The actual HTTP lifecycle was also exercised: `POST /api/monitor/start` launched a real worker, reused the five completed hourly caches, recomputed both observation frames, and reached a watching state. `POST /api/monitor/stop` terminated the owned worker and retained all 24 nodes / 158 links. Desktop and 390 px mobile screenshots of that actual running watch are saved as `live-monitor.png` and `live-monitor-mobile.png`; the browser reported no uncaught errors or document overflow.
+
+## Event relevance filter (2026-10-26)
+
+- Live candidates now pass a Spark MLlib smoothed TF-IDF cosine filter plus all-required-concept matching before graph selection. The checked pool is the strongest 300 spikes, with up to 24 accepted topics displayed.
+- 21 backend/analytics tests pass, including unrelated sports/film rejection, wrong-country protest rejection, missing-description exclusion, a single-document TF-IDF case, metadata failure handling, and a relevant candidate below the original top-24 boundary.
+- Five browser tests pass, including submitting event context/required terms and inspecting the relevance explanation. TypeScript/Vite build and Python lint pass.
+- Actual Wikimedia lead text/categories were retrieved for six articles: two French-protest topics plus Olivia Newton-John, John Travolta, George Kittle and Brian Brobbey. The topical filter accepted the two protest topics and rejected the four unrelated examples. Exact scores are recorded in `relevance-validation.json`.
+- This is a small sanity check, not a labeled accuracy benchmark. Historical protest articles passing this check are not evidence of relevance to the particular October 2026 protest, and are not automatically eligible for the live graph: they must separately pass traffic anomaly rules.

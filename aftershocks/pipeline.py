@@ -5,6 +5,7 @@ import hashlib
 import json
 import math
 import os
+import sys
 import time
 from datetime import UTC, datetime
 from pathlib import Path
@@ -33,6 +34,7 @@ SCHEMA = T.StructType(
 
 def spark_session(master=None):
     os.environ.setdefault("SPARK_LOCAL_IP", "127.0.0.1")
+    os.environ.setdefault("PYSPARK_PYTHON", sys.executable)
     spark = (
         SparkSession.builder.appName("CuriosityAftershocks")
         .master(master or os.environ.get("SPARK_MASTER", "local[2]"))

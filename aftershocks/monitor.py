@@ -31,6 +31,16 @@ class MonitorConfig(BaseModel):
     occurred_at: datetime
     exclude_terms: list[str] = Field(default_factory=list, max_length=8)
 
+    event_context: str = Field(default="", max_length=2000)
+    relevance_terms: list[str] = Field(default_factory=list, max_length=8)
+
+    @field_validator("relevance_terms")
+    @classmethod
+    def valid_relevance_terms(cls, values):
+        if any(not 3 <= len(v.strip()) <= 50 for v in values):
+            raise ValueError("Relevance terms must contain 3–50 characters")
+        return list(dict.fromkeys(v.strip().lower() for v in values))
+
     @field_validator("name")
     @classmethod
     def name_is_nonempty(cls, value):

@@ -1,0 +1,29 @@
+{
+  "validatedAt": "2026-10-26T07:28:56.297618+00:00",
+  "threshold": 0.06,
+  "checked": [
+    "Yellow_vests_protests",
+    "2023_French_pension_reform_strikes",
+    "Olivia_Newton-John",
+    "John_Travolta",
+    "George_Kittle",
+    "Brian_Brobbey"
+  ],
+  "accepted": {
+    "Yellow_vests_protests": {
+      "score": 0.0677,
+      "matchedTerms": [
+        "france",
+        "protest"
+      ]
+    },
+    "2023_French_pension_reform_strikes": {
+      "score": 0.1209,
+      "matchedTerms": [
+        "france",
+        "protest"
+      ]
+    }
+  },
+  "scope": "Topical relevance sanity check, not proof of connection to October 2026 protests; not anomaly eligibility."
+}

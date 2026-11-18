@@ -1,0 +1,9 @@
+**
+!Dockerfile
+!pyproject.toml
+!uv.lock
+!aftershocks/
+!aftershocks/*.py
+!deploy/
+!deploy/data/
+!deploy/data/*.json

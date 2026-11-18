@@ -18,3 +18,5 @@ frontend/playwright-report/
 frontend/*.tsbuildinfo
 
 data/monitor/
+.vercel/
+deploy/vercel/

@@ -469,3 +469,50 @@
   font-size: 8px;
   color: #8c9a91;
 }
+
+.monitor-form .event-context-field {
+  grid-column: span 2;
+}
+.monitor-form textarea {
+  width: 100%;
+  background: #10191b;
+  border: 1px solid #34423b;
+  border-radius: 5px;
+  padding: 12px;
+  color: #e7ecee;
+  font: inherit;
+  resize: vertical;
+}
+.relevance-report {
+  margin: 20px 0;
+  padding: 18px;
+  border: 1px solid #485c35;
+  border-radius: 8px;
+  background: #18221c;
+  line-height: 1.7;
+}
+.relevance-report strong,
+.topic-relevance strong {
+  color: #c3f967;
+}
+.relevance-report small,
+.topic-relevance small {
+  color: #a9b8af;
+}
+.topic-relevance {
+  padding: 14px 0;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.topic-relevance p {
+  margin: 8px 0;
+}
+.topic-relevance a {
+  text-decoration: underline;
+}
+@media (max-width: 700px) {
+  .monitor-form .event-context-field {
+    grid-column: 1 / -1;
+  }
+}

@@ -5,6 +5,7 @@ import fcntl
 import json
 import re
 import shutil
+import subprocess
 import time
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
@@ -18,6 +19,7 @@ from aftershocks.bulk import download_hour, parse_dump
 from aftershocks.ingest import USER_AGENT, retry_delay
 from aftershocks.monitor import anomaly_candidates, atomic_json, baseline_hours, observed_edges
 from aftershocks.pipeline import spark_session
+from aftershocks.relevance import MAX_CANDIDATES, filter_candidates
 
 POLL_SECONDS = 300
 
@@ -101,7 +103,7 @@ def ingest_hour(spark, source, destination, checkpoint):
     return json.loads(report_path.read_text())
 
 
-def discovery_snapshot(spark, cache, baselines, observed, terms):
+def discovery_snapshot(spark, cache, baselines, observed, terms, config):
     def read(hours):
         return spark.read.parquet(*[str(cache / hour_key(h) / "parquet") for h in hours])
 
@@ -112,9 +114,10 @@ def discovery_snapshot(spark, cache, baselines, observed, terms):
     candidates = anomaly_candidates(baseline, current, terms).cache()
     try:
         candidate_count = candidates.count()
-        best = candidates.orderBy(F.desc("excess"), F.asc("article")).limit(24).collect()
+        best = candidates.orderBy(F.desc("excess"), F.asc("article")).limit(MAX_CANDIDATES).collect()
     finally:
         candidates.unpersist()
+    best, evidence, relevance = filter_candidates(spark, best, config, cache / "article_text")
     ids = [r.article for r in best]
     history = []
     if ids:
@@ -130,6 +133,7 @@ def discovery_snapshot(spark, cache, baselines, observed, terms):
             "z": round(r.z, 2),
             "excess": round(r.excess),
             "baselineSamples": r.samples,
+            "relevance": evidence[r.article],
             "series": [
                 {
                     "hour": hour_key(h),
@@ -145,6 +149,8 @@ def discovery_snapshot(spark, cache, baselines, observed, terms):
         "topics": nodes,
         "edges": observed_edges(nodes),
         "candidateCount": candidate_count,
+        "relatedCount": relevance["accepted"],
+        "relevance": relevance,
         "scannedArticles": eligible,
         "latestHour": latest.isoformat(),
         "dataLagMinutes": round((datetime.now(UTC) - latest - timedelta(hours=1)).total_seconds() / 60, 1),
@@ -179,7 +185,8 @@ def run_monitor(run, cache, once=False):
         "Graph edges: observed log-count correlation ≥ 0.85 over ≥ 5 shared points.",
         limitations=[
             "Global traffic spikes are candidates, not proven effects of this event.",
-            "Excluding headline terms is lexical filtering, not proof of semantic unrelatedness.",
+            "TF-IDF and required concept matches indicate topical relevance, not event causation.",
+            "Only the strongest 300 traffic spikes are checked; low-ranked relevant spikes may be missed.",
             "A short three-hour baseline is sensitive to daily traffic cycles and other concurrent news.",
             "Hourly dumps include automated traffic. New or sparse titles without all baseline samples are excluded.",
             "The event hour may include traffic from before the exact event time.",
@@ -258,7 +265,7 @@ def run_monitor(run, cache, once=False):
                     )
                     if observed:
                         snapshot = discovery_snapshot(
-                            spark, cache, baselines, observed, config["exclude_terms"]
+                            spark, cache, baselines, observed, config["exclude_terms"], config
                         )
                         state.update(snapshot)
                         state["timeline"] = [
@@ -273,7 +280,8 @@ def run_monitor(run, cache, once=False):
                         )
                         update(
                             "monitoring",
-                            f"{snapshot['candidateCount']} candidate spikes found across {snapshot['scannedArticles']:,} articles.",
+                            f"{snapshot['relatedCount']} relevant spikes from {snapshot['candidateCount']} traffic spikes; "
+                            f"checked the strongest {snapshot['relevance']['checked']} candidates.",
                         )
                 update(
                     "monitoring" if observed else "waiting",
@@ -292,7 +300,7 @@ def run_monitor(run, cache, once=False):
                         "completed", "Scan completed." if once else "The 24-hour monitoring window has ended."
                     )
                     break
-            except (httpx.HTTPError, OSError, ValueError) as error:
+            except (httpx.HTTPError, OSError, ValueError, subprocess.SubprocessError) as error:
                 if isinstance(error, httpx.HTTPStatusError):
                     delay = max(
                         delay, retry_delay("Retry-After: " + error.response.headers.get("Retry-After", ""), 0)

@@ -22,6 +22,13 @@ type Candidate = {
   lift: number;
   z: number;
   excess: number;
+  relevance?: {
+    score: number;
+    matchedTerms: string[];
+    reason: string;
+    summary: string;
+    sourceUrl: string;
+  };
   baselineSamples: number;
   series: LivePoint[];
 };
@@ -35,7 +42,22 @@ export type LiveState = {
   active: boolean;
   phase: string;
   message: string;
-  config?: { name: string; occurred_at: string; exclude_terms: string[] };
+  config?: {
+    name: string;
+    occurred_at: string;
+    exclude_terms: string[];
+    event_context?: string;
+    relevance_terms?: string[];
+  };
+  relatedCount?: number;
+  relevance?: {
+    checked: number;
+    accepted: number;
+    withText: number;
+    requiredTerms: string[];
+    threshold: number;
+    poolLimit: number;
+  };
   topics: Candidate[];
   edges: LiveEdge[];
   timeline: { hour: string; candidates: number; scannedArticles: number }[];
@@ -254,6 +276,8 @@ export default function LiveMonitor() {
   const [name, setName] = useState(""),
     [when, setWhen] = useState(localInput(new Date(Date.now() - 4 * 3600000))),
     [terms, setTerms] = useState(""),
+    [context, setContext] = useState(""),
+    [requiredTerms, setRequiredTerms] = useState(""),
     [selected, setSelected] = useState("");
   useEffect(() => {
     const controller = new AbortController();
@@ -274,6 +298,8 @@ export default function LiveMonitor() {
           setName(next.config.name);
           setWhen(localInput(new Date(next.config.occurred_at)));
           setTerms(next.config.exclude_terms.join(", "));
+          setContext(next.config.event_context || "");
+          setRequiredTerms((next.config.relevance_terms || []).join(", "));
         }
         first = false;
       } catch (e) {
@@ -299,6 +325,11 @@ export default function LiveMonitor() {
         await request("/api/monitor/start", {
           name,
           occurred_at: new Date(when).toISOString(),
+          event_context: context,
+          relevance_terms: requiredTerms
+            .split(",")
+            .map((t) => t.trim())
+            .filter(Boolean),
           exclude_terms: terms
             .split(",")
             .map((t) => t.trim())
@@ -343,8 +374,8 @@ export default function LiveMonitor() {
           </div>
           <h2>The unexpected, as it emerges.</h2>
           <p>
-            Scan English Wikipedia for sudden attention spikes. No hand-picked
-            topic list.
+            Find traffic spikes with article descriptions that match your event.
+            Spark MLlib checks relevance before drawing the graph.
           </p>
         </div>
         <span className={`monitor-badge ${active ? "is-active" : ""}`}>
@@ -388,6 +419,28 @@ export default function LiveMonitor() {
             onChange={(e) => setTerms(e.target.value)}
             disabled={active || busy}
             placeholder="eclipse, solar"
+          />
+        </label>
+        <label className="event-context-field">
+          Event context{" "}
+          <span>Describe the location, issue and key organizations</span>
+          <textarea
+            maxLength={2000}
+            value={context}
+            onChange={(e) => setContext(e.target.value)}
+            disabled={active || busy}
+            placeholder="Protests and demonstrations in France. Add the specific cause, city and organizations if known."
+            rows={3}
+          />
+        </label>
+        <label>
+          Required relevance terms{" "}
+          <span>Comma separated; leave blank to use event-name concepts</span>
+          <input
+            value={requiredTerms}
+            onChange={(e) => setRequiredTerms(e.target.value)}
+            disabled={active || busy}
+            placeholder="France, protest"
           />
         </label>
         <div className="monitor-form-actions">
@@ -531,10 +584,28 @@ export default function LiveMonitor() {
           <span>DISCOVERED SPIKES</span>
           <div>
             {state?.candidateCount ?? "—"}
-            <small>strongest 24 visualized</small>
+            <small>
+              {state?.relatedCount ?? 0} relevant · up to 24 visualized
+            </small>
           </div>
         </article>
       </section>
+      {state?.relevance && (
+        <div className="relevance-report" role="status">
+          <strong>Spark MLlib relevance filter</strong>
+          <p>
+            {state.relatedCount ?? 0} accepted / {state.relevance.checked}{" "}
+            checked out of {state.candidateCount} traffic spikes. Required
+            concepts: {state.relevance.requiredTerms.join(", ")}. Cosine
+            threshold: {state.relevance.threshold}.
+          </p>
+          <small>
+            Checks the strongest {state.relevance.poolLimit} spikes. Missing
+            descriptions are excluded. Similarity indicates topical relevance,
+            not a verified link to this specific protest.
+          </small>
+        </div>
+      )}
       {state && state.timeline.length > 0 && (
         <div className="live-arrivals" aria-label="Observed post-event hours">
           <span className="eyebrow">OBSERVED HOURS</span>
@@ -561,8 +632,8 @@ export default function LiveMonitor() {
               <div>
                 <h3>Discovery constellation</h3>
                 <span>
-                  Automatically selected from the latest observed hour. Not
-                  attributed to the event.
+                  Traffic spikes filtered by event relevance. Connections show
+                  co-movement, not causation.
                 </span>
               </div>
               <span className="micro">
@@ -627,6 +698,25 @@ export default function LiveMonitor() {
                       <dd>{number(topic.excess)}</dd>
                     </div>
                   </dl>
+                  {topic.relevance && (
+                    <div className="topic-relevance">
+                      <strong>Why this topic appears</strong>
+                      <p>{topic.relevance.reason}</p>
+                      <p>
+                        TF-IDF cosine: {topic.relevance.score.toFixed(3)} (not a
+                        probability)
+                      </p>
+                      <p>{topic.relevance.summary}</p>
+                      <a
+                        href={topic.relevance.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        Wikipedia source ↗
+                      </a>
+                      <small> Article text: CC BY-SA.</small>
+                    </div>
+                  )}
                   <a
                     className="article-link"
                     href={`https://en.wikipedia.org/wiki/${topic.id}`}
@@ -693,12 +783,12 @@ export default function LiveMonitor() {
           </div>
           <h3>
             {state?.latestHour
-              ? "No spikes meet the detection threshold."
+              ? "No spikes passed the event-relevance filter."
               : "Waiting for the first discovery."}
           </h3>
           <p>
             {state?.latestHour
-              ? "This is an observed result, not an error. The monitor will keep checking for newly published hours."
+              ? "No checked article met both the traffic and relevance rules. Unrelated topics are hidden. Add precise event context or review required terms; the monitor will continue checking new hours."
               : "Three pre-event hourly files establish the baseline. As post-event files arrive, Spark scans the broad article universe and the graph grows from observed evidence."}
           </p>
         </div>
@@ -737,8 +827,10 @@ export default function LiveMonitor() {
             baseline hours.
           </p>
           <p>
-            Headline exclusions are literal text filters. They do not establish
-            semantic unrelatedness, and co-movement does not establish cause.
+            Spark MLlib compares event context with Wikipedia lead text and
+            categories using smoothed TF-IDF cosine similarity. Every required
+            concept must also match. This is a conservative vocabulary filter,
+            not proof of event attribution.
           </p>
           <p>
             The short baseline makes this an exploratory demo, sensitive to

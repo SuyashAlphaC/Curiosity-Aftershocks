@@ -26,6 +26,8 @@ test("recent monitor submits configuration, inspects discovered topics and stops
     const config = route.request().postDataJSON();
     expect(config.name).toBe("Recent research demo");
     expect(config.exclude_terms).toEqual(["headline"]);
+    expect(config.event_context).toBe("Demonstrations in France");
+    expect(config.relevance_terms).toEqual(["France", "protest"]);
     const series = [10, 12, 11, 100, 300].map((views, i) => ({
       hour: `20261024-0${i}0000`,
       views,
@@ -43,9 +45,25 @@ test("recent monitor submits configuration, inspects discovered topics and stops
       processedHours: 5,
       scannedArticles: 1200000,
       candidateCount: 2,
+      relatedCount: 2,
+      relevance: {
+        checked: 2,
+        accepted: 2,
+        withText: 2,
+        requiredTerms: ["france", "protest"],
+        threshold: 0.06,
+        poolLimit: 300,
+      },
       latestHour: new Date(Date.now() - 3 * 3600000).toISOString(),
       topics: [
         {
+          relevance: {
+            score: 0.4,
+            matchedTerms: ["france", "protest"],
+            reason: "Matches France and protest",
+            summary: "French demonstrations",
+            sourceUrl: "https://en.wikipedia.org/wiki/Test",
+          },
           id: "Unexpected_topic",
           title: "Unexpected topic",
           views: 300,
@@ -103,7 +121,17 @@ test("recent monitor submits configuration, inspects discovered topics and stops
   await page
     .getByLabel("Headline terms to exclude", { exact: false })
     .fill("headline");
+  await page
+    .getByLabel("Event context", { exact: false })
+    .fill("Demonstrations in France");
+  await page
+    .getByLabel("Required relevance terms", { exact: false })
+    .fill("France, protest");
   await page.getByRole("button", { name: "Start monitoring" }).click();
+  await expect(
+    page.getByText("Spark MLlib relevance filter", { exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText("Matches France and protest")).toBeVisible();
   await expect(
     page.getByRole("button", { name: "Stop monitoring" }),
   ).toBeVisible();
